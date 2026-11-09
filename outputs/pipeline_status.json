@@ -1,0 +1,25 @@
+{
+  "pipeline": "INSTAMART Customer Intelligence & Support Copilot",
+  "stages": {
+    "Part A \u2014 Data Foundation": {
+      "status": "passed",
+      "seconds": 0.532
+    },
+    "Part B \u2014 Customer Intelligence": {
+      "status": "passed",
+      "seconds": 11.225
+    },
+    "Part C \u2014 Support Ticket Intelligence": {
+      "status": "passed",
+      "seconds": 3.75
+    },
+    "Part D \u2014 Policy RAG and Refund Agent": {
+      "status": "passed",
+      "seconds": 0.133
+    }
+  },
+  "started_unix": 1794225861.0837512,
+  "overall_status": "passed",
+  "required_outputs_checked": 17,
+  "elapsed_seconds": 113.129
+}

@@ -1,0 +1,25 @@
+{
+  "token_limit_demo": {
+    "status": "FALLBACK_TOKEN_LIMIT",
+    "llm_calls": 3,
+    "tokens_used": 399
+  },
+  "timeout_demo": {
+    "status": "FALLBACK_TIMEOUT",
+    "llm_calls": 0,
+    "tokens_used": 0
+  },
+  "crash_resume": {
+    "crashed_after_tools": 2,
+    "resumed_status": "REFUND",
+    "final_answer": "REFUND: INR 128.25 issued.",
+    "tools_executed": [
+      "get_order",
+      "search_policy",
+      "calculate_refund",
+      "issue_refund"
+    ],
+    "llm_calls": 5,
+    "tokens_used": 972
+  }
+}

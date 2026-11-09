@@ -1,0 +1,43 @@
+{
+  "overlap_10": {
+    "overlap": 10,
+    "chunks": 15,
+    "answerable": 12,
+    "expected_doc_in_top3": 12,
+    "expected_fact_in_answer": 12,
+    "unanswerable": 2,
+    "fallback_correct": 2,
+    "failures": []
+  },
+  "overlap_0": {
+    "overlap": 0,
+    "chunks": 13,
+    "answerable": 12,
+    "expected_doc_in_top3": 12,
+    "expected_fact_in_answer": 10,
+    "unanswerable": 2,
+    "fallback_correct": 2,
+    "failures": [
+      {
+        "question": "What delivery time makes a completed order eligible for a full refund?",
+        "retrieved": [
+          "refund_policy.txt",
+          "refund_policy.txt",
+          "privacy_policy.txt"
+        ],
+        "answer": "receives a full refund of the order amount.",
+        "expected_fact": "more than 45 minutes"
+      },
+      {
+        "question": "How soon is money returned when a payment fails but is deducted?",
+        "retrieved": [
+          "payment_policy.txt",
+          "refund_policy.txt",
+          "privacy_policy.txt"
+        ],
+        "answer": "If a payment fails but money is deducted, the amount is returned automatically\n  1000 must be approved by a human support lead before money is returned.",
+        "expected_fact": "48 hours"
+      }
+    ]
+  }
+}

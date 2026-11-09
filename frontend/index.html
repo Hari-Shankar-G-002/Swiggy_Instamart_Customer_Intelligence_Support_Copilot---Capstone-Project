@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10243a">
+  <title>INSTAMART — Customer Intelligence & Support Copilot</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-lockup">
+        <div class="brand-mark">I</div>
+        <div><strong>INSTAMART</strong><span>INTELLIGENCE COPILOT</span></div>
+      </div>
+      <div class="nav-label">WORKSPACE</div>
+      <nav aria-label="Main navigation">
+        <button class="nav-link active" data-page="overview"><span class="nav-icon">▦</span>Executive Overview</button>
+        <button class="nav-link" data-page="customers"><span class="nav-icon">◉</span>Customer Intelligence</button>
+        <button class="nav-link" data-page="assistant"><span class="nav-icon">✧</span>AI Policy Assistant</button>
+        <button class="nav-link" data-page="monitoring"><span class="nav-icon">▤</span>Project Monitoring</button>
+      </nav>
+      <div class="sidebar-foot"><span class="live-dot"></span> Local analytics environment<br><small>Offline · Synthetic project data</small></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><div class="eyebrow">CUSTOMER EXPERIENCE / ANALYTICS</div><div class="top-title">Customer Intelligence &amp; Support Copilot</div></div>
+        <div class="top-status"><span class="live-dot"></span><span id="connectionStatus">Connecting to backend</span></div>
+      </header>
+
+      <section class="page active" id="page-overview">
+        <div class="page-heading"><div><div class="eyebrow">OVERVIEW</div><h1>Executive Overview</h1><p>One view of customer activity, order performance and support demand.</p></div><span class="date-chip">Analytics window · Apr–Sep 2025</span></div>
+        <div class="kpi-grid" id="overviewKpis"><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div></div>
+        <div class="chart-grid two-col">
+          <article class="panel"><div class="panel-head"><div><h2>Revenue by City</h2><p>Completed order revenue · INR</p></div><span class="panel-tag">CITY</span></div><div id="revenueByCity" class="chart-box"></div></article>
+          <article class="panel"><div class="panel-head"><div><h2>Order Status Distribution</h2><p>Final order status mix</p></div><span class="panel-tag">ORDERS</span></div><div id="statusPie" class="chart-box"></div></article>
+          <article class="panel"><div class="panel-head"><div><h2>Revenue by Product Category</h2><p>Completed order revenue · INR</p></div><span class="panel-tag">CATEGORY</span></div><div id="revenueCategory" class="chart-box"></div></article>
+          <article class="panel"><div class="panel-head"><div><h2>Daily Revenue Trend</h2><p>Revenue by order date · INR</p></div><span class="panel-tag">TREND</span></div><div id="dailyTrend" class="chart-box"></div></article>
+          <article class="panel"><div class="panel-head"><div><h2>Customer Segment Distribution</h2><p>Whole-window RFM segments</p></div><span class="panel-tag">CUSTOMERS</span></div><div id="segmentPie" class="chart-box"></div></article>
+          <article class="panel"><div class="panel-head"><div><h2>Order Volume by City</h2><p>All final orders</p></div><span class="panel-tag">VOLUME</span></div><div id="orderVolume" class="chart-box"></div></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-customers">
+        <div class="page-heading"><div><div class="eyebrow">RETENTION &amp; SEGMENTATION</div><h1>Customer Intelligence</h1><p>RFM profiles and pre-cutoff lapse scores for customer prioritisation.</p></div></div>
+        <div class="kpi-grid" id="customerKpis"></div>
+        <div class="chart-grid two-col">
+          <article class="panel"><div class="panel-head"><div><h2>Customer Segment Distribution</h2><p>Customer count and share by segment</p></div></div><div id="segmentDistribution" class="chart-box"></div></article>
+          <article class="panel"><div class="panel-head"><div><h2>Average Monetary Value by Segment</h2><p>Average completed spend · INR</p></div></div><div id="monetaryBySegment" class="chart-box"></div></article>
+          <article class="panel"><div class="panel-head"><div><h2>Recency vs Monetary Value</h2><p>Each point represents one customer</p></div></div><div id="recencyMonetary" class="chart-box"></div></article>
+          <article class="panel"><div class="panel-head"><div><h2>Frequency vs Monetary Value</h2><p>Orders vs completed spend · INR</p></div></div><div id="frequencyMonetary" class="chart-box"></div></article>
+          <article class="panel"><div class="panel-head"><div><h2>Customer Count by City</h2><p>Customers with completed order history</p></div></div><div id="customerCity" class="chart-box"></div></article>
+          <article class="panel"><div class="panel-head"><div><h2>Top 10 High-Risk Customers</h2><p>Predicted lapse probability</p></div><span class="panel-tag">RISK SCORE</span></div><div id="highRisk" class="chart-box"></div></article>
+        </div>
+        <article class="panel table-panel">
+          <div class="panel-head table-title"><div><h2>Customer Directory</h2><p>Search and filter the whole-window RFM customer table.</p></div><div class="filter-row"><input id="customerSearch" type="search" placeholder="Search customer ID or city" aria-label="Search customers"><select id="cityFilter" aria-label="Filter by city"><option value="">All cities</option></select><select id="segmentFilter" aria-label="Filter by segment"><option value="">All segments</option></select></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Customer ID</th><th>City</th><th>Segment</th><th>Recency</th><th>Frequency</th><th>Monetary</th><th>Premium</th><th>Lapse probability</th></tr></thead><tbody id="customerTableBody"><tr><td colspan="8">Loading customers…</td></tr></tbody></table></div>
+          <div class="table-foot" id="customerTableCount"></div>
+          <p class="note">The retention list is illustrative and uses a post-hoc Premium segment flag from whole-window RFM; it is not a leakage-free evaluation.</p>
+        </article>
+      </section>
+
+      <section class="page" id="page-assistant">
+        <div class="page-heading"><div><div class="eyebrow">KNOWLEDGE SUPPORT</div><h1>AI Policy Assistant</h1><p>Ask a question and receive an answer grounded in the five supplied policy documents.</p></div><span class="offline-chip">✧ Offline RAG</span></div>
+        <div class="assistant-layout">
+          <article class="panel chat-panel">
+            <div class="chat-head"><div class="assistant-avatar">✧</div><div><strong>Policy Copilot</strong><span>Uses TF-IDF retrieval + offline mock LLM</span></div><button id="clearChat" class="ghost-button">Clear conversation</button></div>
+            <div id="chatMessages" class="chat-messages"><div class="chat-message assistant"><div class="bubble-label">POLICY COPILOT</div><div class="bubble">Hello. Ask me about refunds, delivery, payments, privacy or escalation policies. I’ll cite the policy documents used.</div></div></div>
+            <form id="policyForm" class="chat-input-row"><textarea id="policyQuestion" rows="2" placeholder="Type a policy question…" required></textarea><button class="primary-button" type="submit">Ask question <span>↗</span></button></form>
+          </article>
+          <aside class="panel sample-panel"><div class="eyebrow">SUGGESTED QUESTIONS</div><h2>Start with a question</h2><p>Choose one of these examples or enter your own.</p><div class="sample-list">
+            <button class="sample-question">What delivery time makes an order eligible for a full refund?</button>
+            <button class="sample-question">Who approves refunds above INR 1000?</button>
+            <button class="sample-question">How many days are allowed to raise a refund request?</button>
+            <button class="sample-question">What is the delivery fee for small orders?</button>
+            <button class="sample-question">How long does a failed payment refund take?</button>
+            <button class="sample-question">Can wallet balance be refunded as cash?</button>
+            <button class="sample-question">How quickly must a fraud ticket be escalated?</button>
+          </div><div class="source-box"><strong>Knowledge sources</strong><span>5 policy text files · 15 overlapping chunks · top 3 retrieval</span></div></aside>
+        </div>
+      </section>
+
+      <section class="page" id="page-monitoring">
+        <div class="page-heading"><div><div class="eyebrow">PIPELINE HEALTH</div><h1>Project Monitoring</h1><p>Execution and quality indicators calculated from actual pipeline outputs.</p></div><span class="date-chip">Live local outputs</span></div>
+        <div id="stageStatus" class="stage-grid"></div>
+        <div class="monitor-section"><div class="section-title"><h2>Data Pipeline Monitoring</h2><span>PART A</span></div><div id="dataMetrics" class="metric-strip"></div></div>
+        <div class="monitor-section"><div class="section-title"><h2>Machine Learning Monitoring</h2><span>PART B</span></div><div id="mlMetrics" class="metric-strip"></div><article class="panel"><div class="panel-head"><div><h2>Lapse Model F1 Comparison</h2><p>Positive-class test F1; baseline predicts no customer will lapse.</p></div></div><div id="modelF1" class="chart-box"></div></article></div>
+        <div class="monitor-section"><div class="section-title"><h2>Support Ticket Monitoring</h2><span>PART C</span></div><div id="supportMetrics" class="metric-strip"></div><div class="chart-grid two-col"><article class="panel"><div class="panel-head"><h2>Ticket Processing Status</h2></div><div id="triageStatus" class="chart-box"></div></article><article class="panel"><div class="panel-head"><h2>Ticket Classification Status</h2></div><div id="triageClass" class="chart-box"></div></article></div></div>
+        <div class="monitor-section"><div class="section-title"><h2>RAG &amp; Refund Agent Monitoring</h2><span>PART D</span></div><div id="ragMetrics" class="metric-strip"></div><article class="panel"><div class="panel-head"><h2>Refund Scenario Outcomes</h2></div><div id="agentOutcomes" class="chart-box"></div></article></div>
+      </section>
+
+      <div id="globalError" class="error-banner" role="alert" hidden></div>
+      <footer class="footer">Instamart Customer Intelligence &amp; Support Copilot <span>Fictional synthetic dataset · INR · Local/offline project</span></footer>
+    </main>
+  </div>
+  <script src="/js/api.js"></script>
+  <script src="/js/charts.js"></script>
+  <script src="/js/overview.js"></script>
+  <script src="/js/customers.js"></script>
+  <script src="/js/assistant.js"></script>
+  <script src="/js/monitoring.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
